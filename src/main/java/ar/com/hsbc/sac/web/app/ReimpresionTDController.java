@@ -49,7 +49,7 @@ class ReimpresionTDController {
 
     private DebitCardDTO getDebitCardDetails(String numero) {
         return DebitCardDTO.builder().banelcoCardNumber(numero).cardType("Banelco").company("2").docType("DNI")
-                .docType("000000010266305").embozo("114").habilitacion("AC_TAR_PRE").reprint("RE_TAR_PRE").build();
+                .docType("000000010266305").embozo("114").habilitation("AC_TAR_PRE").reprint("RE_TAR_PRE").build();
     }
 
     private List<TipoEmbozo> getEmbozos() {

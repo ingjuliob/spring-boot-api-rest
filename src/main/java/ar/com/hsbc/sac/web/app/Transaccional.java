@@ -38,5 +38,6 @@ class Transaccional {
     private AttachFileDTO attached;
     private PrintDTO print;
     private List<CuentaRelDTO> relatedAccounts;
+    private List<DataWindowsDTO> dataWindowsDTO;
 
 }

@@ -13,7 +13,7 @@ public class DebitCardDTO {
     private String banelcoCardNumber;
     private String company;
     private String embozo;
-    private String habilitacion;
+    private String habilitation;
     private String reprint;
 
 }
