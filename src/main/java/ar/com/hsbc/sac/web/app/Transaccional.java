@@ -36,5 +36,6 @@ class Transaccional {
     private List<RelacionTipoDocumental> relTipoDocumentalProducto;
     private AttachFileDTO attached;
     private PrintDTO print;
+    private  HsbcRewardsDTO hsbcRewardsDTO;
 
 }
