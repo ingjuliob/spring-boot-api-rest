@@ -16,8 +16,8 @@ public class HsbcRewardsController {
     HsbcRewardsDTO hsbcRewDto = null;
     Map <String,HsbcRewardsDTO> hsbcRewMap = new HashMap<>();
     private void setRewards(){
-        this.hsbcRewDto= HsbcRewardsDTO.builder().respondHsbcRewards("RETAD02 ").hasCreditCard(true)
-            .hasDebitCard(true).message("El cliente posee tarjeta de debito").build();
+        this.hsbcRewDto= HsbcRewardsDTO.builder().respondHsbcRewards("RETAD08 ").hasCreditCard(true)
+            .hasDebitCard(false).message("El cliente posee tarjeta de debito").build();
         hsbcRewMap.put("DNI10266305",hsbcRewDto);
     }
 
