@@ -37,5 +37,8 @@ class Transaccional {
     private AttachFileDTO attached;
     private PrintDTO print;
     private  HsbcRewardsDTO hsbcRewardsDTO;
+    private List<HistoricoSeguimientoDTO> historicoOCA;
+    private List<AccionesPendientesOcaDTO> accPendOca;
+    private GenerateStateHistPendingActDTO generateStateHistPendingActDTO;
 
 }
