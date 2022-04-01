@@ -40,5 +40,9 @@ class Transaccional {
     private List<HistoricoSeguimientoDTO> historicoOCA;
     private List<AccionesPendientesOcaDTO> accPendOca;
     private GenerateStateHistPendingActDTO generateStateHistPendingActDTO;
+    private List<DomicilioDTO> changeAddresTipDom;
+    private List<DomicilioDTO> changeAddresNovDom;
+    private List<DomicilioDTO> changeAddresProv;
+    private SolicitudCambioDomicilioDTO solicitud;
 
 }
