@@ -44,5 +44,6 @@ class Transaccional {
     private List<DomicilioDTO> changeAddresNovDom;
     private List<DomicilioDTO> changeAddresProv;
     private SolicitudCambioDomicilioDTO solicitud;
+    private List<GeograficDTO> geograficDto;
 
 }

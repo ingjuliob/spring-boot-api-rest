@@ -24,10 +24,12 @@ public class CambioDomicilioController {
     private DomicilioDTO [] changeAddresTipDom = new DomicilioDTO[3];
     private DomicilioDTO [] changeAddresNovDom = new DomicilioDTO[4];
     private DomicilioDTO [] changeAddresProv = new DomicilioDTO[26];
+    private GeograficDTO [] geograficDto = new GeograficDTO[3];
     private Map<String,SolicitudCambioDomicilioDTO> domiActCorr= new HashMap<>();
     private Map<String,DomicilioDTO[]> tipoDom= new HashMap<>();
     private Map<String,DomicilioDTO[]> novDom= new HashMap<>();
     private Map<String,DomicilioDTO[]> addProv= new HashMap<>();
+    private Map<String, GeograficDTO[]> geografic= new HashMap<>();
 
     private void setCards() {
             cards[0] = CardDTO.builder().numero("4697240000182586").nombres("SSS, RRR")
@@ -85,7 +87,12 @@ public class CambioDomicilioController {
             changeAddresProv[23]=DomicilioDTO.builder().staCde("22").ExpirDtText("SANTIAGO DEL ESTERO").build();
             changeAddresProv[24]=DomicilioDTO.builder().staCde("24").ExpirDtText("TIERRA DEL FUEGO").build();
             changeAddresProv[25]=DomicilioDTO.builder().staCde("23").ExpirDtText("TUCUMAN").build();
-            addProv.put("DNI10266305", changeAddresProv);            
+            addProv.put("DNI10266305", changeAddresProv);  
+            
+            geograficDto[0]= GeograficDTO.builder().code("B2170").description("GERLI - BS. AS.").build();
+            geograficDto[1]= GeograficDTO.builder().code("B2240").description("LANUS ESTE - BS. AS.").build();
+            geograficDto[2]= GeograficDTO.builder().code("B2241").description("LANUS OESTE - BS. AS.").build();
+                geografic.put("1824", geograficDto);
 
             
     }
@@ -101,6 +108,21 @@ public class CambioDomicilioController {
                     transacc = Transaccional.builder().cards(Arrays.asList(enquireCard.get(documento)))
                                     .solicitud(domiActCorr.get(documento)).changeAddresTipDom(Arrays.asList(tipoDom.get(documento)))
                                     .changeAddresNovDom(Arrays.asList(novDom.get(documento))).changeAddresProv(Arrays.asList(addProv.get(documento)))
+                                    .header(UtilsController.getSuccessResponse()).build();
+            } else {
+                    transacc = Transaccional.builder().header(UtilsController.getNotFoundResponse()).build();
+            }
+            return new ResponseEntity<>(transacc, HttpStatus.OK);
+    }
+
+    @GetMapping("/getGeograficCode")
+    public ResponseEntity<Transaccional> getGeograficCode(@RequestParam("operationId") String operationId,
+                    @RequestParam("postalCode") String postalCode) {
+            this.setCards();
+            String documento = postalCode;
+            Transaccional transacc = null;
+            if (geografic.containsKey(documento)) {
+                    transacc = Transaccional.builder().geograficDto(Arrays.asList(geografic.get(documento)))
                                     .header(UtilsController.getSuccessResponse()).build();
             } else {
                     transacc = Transaccional.builder().header(UtilsController.getNotFoundResponse()).build();
