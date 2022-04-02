@@ -25,6 +25,7 @@ public class CambioDomicilioController {
     private DomicilioDTO [] changeAddresNovDom = new DomicilioDTO[4];
     private DomicilioDTO [] changeAddresProv = new DomicilioDTO[26];
     private GeograficDTO [] geograficDto = new GeograficDTO[3];
+    private GeograficDTO [] geograficDto1 = new GeograficDTO[1];
     private Map<String,SolicitudCambioDomicilioDTO> domiActCorr= new HashMap<>();
     private Map<String,DomicilioDTO[]> tipoDom= new HashMap<>();
     private Map<String,DomicilioDTO[]> novDom= new HashMap<>();
@@ -93,7 +94,9 @@ public class CambioDomicilioController {
             geograficDto[1]= GeograficDTO.builder().code("B2240").description("LANUS ESTE - BS. AS.").build();
             geograficDto[2]= GeograficDTO.builder().code("B2241").description("LANUS OESTE - BS. AS.").build();
                 geografic.put("1824", geograficDto);
-
+            
+                geograficDto1[0]= GeograficDTO.builder().code("C1000").description("CAP. FEDERAL MODIF").build();
+                geografic.put("1406", geograficDto1);
             
     }
 
