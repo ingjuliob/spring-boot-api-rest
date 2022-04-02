@@ -21,13 +21,13 @@ public class CambioDomicilioController {
     private CardDTO[] cards = new CardDTO[2];
     private Map<String, CardDTO[]> enquireCard = new HashMap<>();
     private SolicitudCambioDomicilioDTO solicitud = null;
-    private List<DomicilioDTO> changeAddresTipDom = new ArrayList<DomicilioDTO>();
-    private List<DomicilioDTO> changeAddresNovDom = new ArrayList<DomicilioDTO>();
-    private List<DomicilioDTO> changeAddresProv = new ArrayList<DomicilioDTO>();
+    private DomicilioDTO [] changeAddresTipDom = new DomicilioDTO[3];
+    private DomicilioDTO [] changeAddresNovDom = new DomicilioDTO[4];
+    private DomicilioDTO [] changeAddresProv = new DomicilioDTO[26];
     private Map<String,SolicitudCambioDomicilioDTO> domiActCorr= new HashMap<>();
-    private Map<String,List<DomicilioDTO>> tipoDom= new HashMap<>();
-    private Map<String,List<DomicilioDTO>> novDom= new HashMap<>();
-    private Map<String,List<DomicilioDTO>> addProv= new HashMap<>();
+    private Map<String,DomicilioDTO[]> tipoDom= new HashMap<>();
+    private Map<String,DomicilioDTO[]> novDom= new HashMap<>();
+    private Map<String,DomicilioDTO[]> addProv= new HashMap<>();
 
     private void setCards() {
             cards[0] = CardDTO.builder().numero("4697240000182586").nombres("SSS, RRR")
@@ -48,43 +48,43 @@ public class CambioDomicilioController {
                 .domicilioCorrespondenciaStatus(true).build();
                 domiActCorr.put("DNI10266305", solicitud);
             
-            changeAddresTipDom.add(DomicilioDTO.builder().staCde("1").ExpirDtText("PARTICULAR").build());
-            changeAddresTipDom.add(DomicilioDTO.builder().staCde("6").ExpirDtText("CORRESPONDENCIA").build());
-            changeAddresTipDom.add(DomicilioDTO.builder().staCde("7").ExpirDtText("PARTICULAR Y CORRESPONDENCIA").build());
+            changeAddresTipDom[0]=DomicilioDTO.builder().staCde("1").ExpirDtText("PARTICULAR").build();
+            changeAddresTipDom[1]=DomicilioDTO.builder().staCde("6").ExpirDtText("CORRESPONDENCIA").build();
+            changeAddresTipDom[2]=DomicilioDTO.builder().staCde("7").ExpirDtText("PARTICULAR Y CORRESPONDENCIA").build();
             tipoDom.put("DNI10266305", changeAddresTipDom);
 
-            changeAddresNovDom.add(DomicilioDTO.builder().staCde("***").ExpirDtText("BLANQUEO").build());
-            changeAddresNovDom.add(DomicilioDTO.builder().staCde("DTO").ExpirDtText("DEPARTAMENTO").build());
-            changeAddresNovDom.add(DomicilioDTO.builder().staCde("LOC").ExpirDtText("LOCAL").build());
-            changeAddresNovDom.add(DomicilioDTO.builder().staCde("OFI").ExpirDtText("OFICINA").build());
+            changeAddresNovDom[0]=DomicilioDTO.builder().staCde("***").ExpirDtText("BLANQUEO").build();
+            changeAddresNovDom[1]=DomicilioDTO.builder().staCde("DTO").ExpirDtText("DEPARTAMENTO").build();
+            changeAddresNovDom[2]=DomicilioDTO.builder().staCde("LOC").ExpirDtText("LOCAL").build();
+            changeAddresNovDom[3]=DomicilioDTO.builder().staCde("OFI").ExpirDtText("OFICINA").build();
             novDom.put("DNI10266305", changeAddresNovDom);
 
-            changeAddresProv.add(DomicilioDTO.builder().staCde("2").ExpirDtText("BUENOS AIRES").build());
-            changeAddresProv.add(DomicilioDTO.builder().staCde("3").ExpirDtText("CATAMARCA").build());
-            changeAddresProv.add(DomicilioDTO.builder().staCde("6").ExpirDtText("CHACO").build());
-            changeAddresProv.add(DomicilioDTO.builder().staCde("7").ExpirDtText("CHUBUT").build());
-            changeAddresProv.add(DomicilioDTO.builder().staCde("1").ExpirDtText("CIUDAD AUTONOMA DE BUENOS AIRES").build());
-            changeAddresProv.add(DomicilioDTO.builder().staCde("4").ExpirDtText("CORDOBA").build());
-            changeAddresProv.add(DomicilioDTO.builder().staCde("5").ExpirDtText("CORRIENTES").build());
-            changeAddresProv.add(DomicilioDTO.builder().staCde("8").ExpirDtText("ENTRE RIOS").build());
-            changeAddresProv.add(DomicilioDTO.builder().staCde("9").ExpirDtText("FORMOSA").build());
-            changeAddresProv.add(DomicilioDTO.builder().staCde("10").ExpirDtText("JUJUY").build());
-            changeAddresProv.add(DomicilioDTO.builder().staCde("11").ExpirDtText("LA PAMPA").build());
-            changeAddresProv.add(DomicilioDTO.builder().staCde("12").ExpirDtText("LA RIOJA").build());
-            changeAddresProv.add(DomicilioDTO.builder().staCde("13").ExpirDtText("MENDOZA").build());
-            changeAddresProv.add(DomicilioDTO.builder().staCde("14").ExpirDtText("MISIONES").build());
-            changeAddresProv.add(DomicilioDTO.builder().staCde("15").ExpirDtText("NEUQUEN").build());
-            changeAddresProv.add(DomicilioDTO.builder().staCde("27").ExpirDtText("NEW-ADINTAR").build());
-            changeAddresProv.add(DomicilioDTO.builder().staCde("25").ExpirDtText("NUEVA PROVINCIA").build());
-            changeAddresProv.add(DomicilioDTO.builder().staCde("16").ExpirDtText("RIO NEGRO").build());
-            changeAddresProv.add(DomicilioDTO.builder().staCde("17").ExpirDtText("SALTA").build());
-            changeAddresProv.add(DomicilioDTO.builder().staCde("18").ExpirDtText("SAN JUAN").build());
-            changeAddresProv.add(DomicilioDTO.builder().staCde("19").ExpirDtText("SAN LUIS").build());
-            changeAddresProv.add(DomicilioDTO.builder().staCde("20").ExpirDtText("SANTA CRUZ").build());
-            changeAddresProv.add(DomicilioDTO.builder().staCde("21").ExpirDtText("SANTA FE").build());
-            changeAddresProv.add(DomicilioDTO.builder().staCde("22").ExpirDtText("SANTIAGO DEL ESTERO").build());
-            changeAddresProv.add(DomicilioDTO.builder().staCde("24").ExpirDtText("TIERRA DEL FUEGO").build());
-            changeAddresProv.add(DomicilioDTO.builder().staCde("23").ExpirDtText("TUCUMAN").build());
+            changeAddresProv[0]=DomicilioDTO.builder().staCde("2").ExpirDtText("BUENOS AIRES").build();
+            changeAddresProv[1]=DomicilioDTO.builder().staCde("3").ExpirDtText("CATAMARCA").build();
+            changeAddresProv[2]=DomicilioDTO.builder().staCde("6").ExpirDtText("CHACO").build();
+            changeAddresProv[3]=DomicilioDTO.builder().staCde("7").ExpirDtText("CHUBUT").build();
+            changeAddresProv[4]=DomicilioDTO.builder().staCde("1").ExpirDtText("CIUDAD AUTONOMA DE BUENOS AIRES").build();
+            changeAddresProv[5]=DomicilioDTO.builder().staCde("4").ExpirDtText("CORDOBA").build();
+            changeAddresProv[6]=DomicilioDTO.builder().staCde("5").ExpirDtText("CORRIENTES").build();
+            changeAddresProv[7]=DomicilioDTO.builder().staCde("8").ExpirDtText("ENTRE RIOS").build();
+            changeAddresProv[8]=DomicilioDTO.builder().staCde("9").ExpirDtText("FORMOSA").build();
+            changeAddresProv[9]=DomicilioDTO.builder().staCde("10").ExpirDtText("JUJUY").build();
+            changeAddresProv[10]=DomicilioDTO.builder().staCde("11").ExpirDtText("LA PAMPA").build();
+            changeAddresProv[11]=DomicilioDTO.builder().staCde("12").ExpirDtText("LA RIOJA").build();
+            changeAddresProv[12]=DomicilioDTO.builder().staCde("13").ExpirDtText("MENDOZA").build();
+            changeAddresProv[13]=DomicilioDTO.builder().staCde("14").ExpirDtText("MISIONES").build();
+            changeAddresProv[14]=DomicilioDTO.builder().staCde("15").ExpirDtText("NEUQUEN").build();
+            changeAddresProv[15]=DomicilioDTO.builder().staCde("27").ExpirDtText("NEW-ADINTAR").build();
+            changeAddresProv[16]=DomicilioDTO.builder().staCde("25").ExpirDtText("NUEVA PROVINCIA").build();
+            changeAddresProv[17]=DomicilioDTO.builder().staCde("16").ExpirDtText("RIO NEGRO").build();
+            changeAddresProv[18]=DomicilioDTO.builder().staCde("17").ExpirDtText("SALTA").build();
+            changeAddresProv[19]=DomicilioDTO.builder().staCde("18").ExpirDtText("SAN JUAN").build();
+            changeAddresProv[20]=DomicilioDTO.builder().staCde("19").ExpirDtText("SAN LUIS").build();
+            changeAddresProv[21]=DomicilioDTO.builder().staCde("20").ExpirDtText("SANTA CRUZ").build();
+            changeAddresProv[22]=DomicilioDTO.builder().staCde("21").ExpirDtText("SANTA FE").build();
+            changeAddresProv[23]=DomicilioDTO.builder().staCde("22").ExpirDtText("SANTIAGO DEL ESTERO").build();
+            changeAddresProv[24]=DomicilioDTO.builder().staCde("24").ExpirDtText("TIERRA DEL FUEGO").build();
+            changeAddresProv[25]=DomicilioDTO.builder().staCde("23").ExpirDtText("TUCUMAN").build();
             addProv.put("DNI10266305", changeAddresProv);            
 
             
@@ -99,8 +99,8 @@ public class CambioDomicilioController {
             Transaccional transacc = null;
             if (enquireCard.containsKey(documento)) {
                     transacc = Transaccional.builder().cards(Arrays.asList(enquireCard.get(documento)))
-                                    .solicitud(domiActCorr.get(documento)).changeAddresTipDom(tipoDom.get(documento))
-                                    .changeAddresNovDom(novDom.get(documento)).changeAddresProv(addProv.get(documento))
+                                    .solicitud(domiActCorr.get(documento)).changeAddresTipDom(Arrays.asList(tipoDom.get(documento)))
+                                    .changeAddresNovDom(Arrays.asList(novDom.get(documento))).changeAddresProv(Arrays.asList(addProv.get(documento)))
                                     .header(UtilsController.getSuccessResponse()).build();
             } else {
                     transacc = Transaccional.builder().header(UtilsController.getNotFoundResponse()).build();
