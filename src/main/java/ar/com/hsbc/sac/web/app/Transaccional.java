@@ -43,7 +43,9 @@ class Transaccional {
     private List<DomicilioDTO> changeAddresTipDom;
     private List<DomicilioDTO> changeAddresNovDom;
     private List<DomicilioDTO> changeAddresProv;
-    private SolicitudCambioDomicilioDTO solicitud;
+    private SolicitudCambioDomicilioDTO solicitudParticular;
+    private SolicitudCambioDomicilioDTO solicitudCorrespondencia;
     private List<GeograficDTO> geograficDto;
+    private List<MotivoDTO> motivoDto;
 
 }

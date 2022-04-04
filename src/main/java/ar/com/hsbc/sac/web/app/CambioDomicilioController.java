@@ -20,12 +20,14 @@ import ar.com.hsbc.sac.web.model.CardDTO;
 public class CambioDomicilioController {
     private CardDTO[] cards = new CardDTO[2];
     private Map<String, CardDTO[]> enquireCard = new HashMap<>();
-    private SolicitudCambioDomicilioDTO solicitud = null;
+    private SolicitudCambioDomicilioDTO solicitudParticular = null;
+    private SolicitudCambioDomicilioDTO solicitudCorrespondencia = null;
     private DomicilioDTO [] changeAddresTipDom = new DomicilioDTO[3];
     private DomicilioDTO [] changeAddresNovDom = new DomicilioDTO[4];
     private DomicilioDTO [] changeAddresProv = new DomicilioDTO[26];
     private GeograficDTO [] geograficDto = new GeograficDTO[3];
     private GeograficDTO [] geograficDto1 = new GeograficDTO[1];
+    private Map<String,SolicitudCambioDomicilioDTO> domiActParticular= new HashMap<>();
     private Map<String,SolicitudCambioDomicilioDTO> domiActCorr= new HashMap<>();
     private Map<String,DomicilioDTO[]> tipoDom= new HashMap<>();
     private Map<String,DomicilioDTO[]> novDom= new HashMap<>();
@@ -43,13 +45,19 @@ public class CambioDomicilioController {
                             .build();
             enquireCard.put("DNI10266305", cards);
 
-            solicitud = SolicitudCambioDomicilioDTO.builder().entidad("HSBC").administradora("VISA").domicilioActualPais("ARG")
+            solicitudParticular = SolicitudCambioDomicilioDTO.builder().entidad("HSBC").administradora("VISA").domicilioActualPais("ARG")
                 .domicilioActualProvincia("CIUDAD AUTON. DE BUENOS AIRES").domicilioActualCiudad("CAPITAL FEDERAL").domicilioActualCalle("AV NAZCA")
                 .domicilioActualAltura("3103").domicilioActualPiso("3").domicilioActualDepto("C").telefonoActualNro("5022420").domicilioActualStatus(true)
                 .domicilioActualCodigoPostal("1417").domicilioParticular("AV NAZCA 3103 Piso 3 Depto C C.P. 1417, CAPITAL FEDERAL, CIUDAD AUTON. DE BUENOS AIRES, Tel: 5022420")
-                .domicilioCorrespondencia("AV NAZCA 3103 Piso 3 Depto C C.P. 1417, CAPITAL FEDERAL, CIUDAD AUTON. DE BUENOS AIRES, Tel: 5022420")
                 .domicilioCorrespondenciaStatus(true).build();
-                domiActCorr.put("DNI10266305", solicitud);
+                domiActParticular.put("DNI10266305", solicitudParticular);
+                solicitudCorrespondencia= SolicitudCambioDomicilioDTO.builder().entidad("HSBC").administradora("VISA").domicilioActualPais("ARG")
+                .domicilioActualProvincia("CIUDAD AUTON. DE BUENOS AIRES").domicilioActualCiudad("CAPITAL FEDERAL").domicilioActualCalle("AV NAZCA")
+                .domicilioActualAltura("3103").domicilioActualPiso("3").domicilioActualDepto("C").telefonoActualNro("5022420").domicilioActualStatus(true)
+                .domicilioActualCodigoPostal("1417")
+                .domicilioCorrespondencia("Sin datos del Domicilio Correspondencia")
+                .domicilioCorrespondenciaStatus(true).build();
+                domiActCorr.put("DNI10266305", solicitudCorrespondencia);
             
             changeAddresTipDom[0]=DomicilioDTO.builder().staCde("1").ExpirDtText("PARTICULAR").build();
             changeAddresTipDom[1]=DomicilioDTO.builder().staCde("6").ExpirDtText("CORRESPONDENCIA").build();
@@ -109,7 +117,7 @@ public class CambioDomicilioController {
             Transaccional transacc = null;
             if (enquireCard.containsKey(documento)) {
                     transacc = Transaccional.builder().cards(Arrays.asList(enquireCard.get(documento)))
-                                    .solicitud(domiActCorr.get(documento)).changeAddresTipDom(Arrays.asList(tipoDom.get(documento)))
+                                    .solicitudCorrespondencia(domiActCorr.get(documento)).solicitudParticular(domiActParticular.get(documento)).changeAddresTipDom(Arrays.asList(tipoDom.get(documento)))
                                     .changeAddresNovDom(Arrays.asList(novDom.get(documento))).changeAddresProv(Arrays.asList(addProv.get(documento)))
                                     .header(UtilsController.getSuccessResponse()).build();
             } else {
