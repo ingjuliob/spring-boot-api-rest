@@ -47,5 +47,11 @@ class Transaccional {
     private SolicitudCambioDomicilioDTO solicitudCorrespondencia;
     private List<GeograficDTO> geograficDto;
     private List<MotivoDTO> motivoDto;
+    private boolean tieneDebitos, tienePlazoFijo,tienePrestamos, tieneTarjetas, visibilidadGrabar;
+    private String errorDebitos,estado;
+    private List<CardDTO> tarjetasDeCredito;
+    private List<PlazoFijoDTO> listaPlazoFijo;
+    private List<DebitoDTO> listaDebitos;
+    private List<CuentaDTO> cuentaList;
 
 }

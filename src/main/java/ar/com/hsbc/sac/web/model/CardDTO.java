@@ -8,6 +8,6 @@ import lombok.Data;
 public class CardDTO {
 
     private String numero, tipo, codigoAdmin, bancoOrigen, tipoDocumento, nombres, estado, numeroDocumento,
-            codigoEstado, categoria, ajuste;
+            codigoEstado, categoria, ajuste, grupoAfCodigo, grupAfDesc, secuencia, cuentAsociadaNumero;
 
 }
