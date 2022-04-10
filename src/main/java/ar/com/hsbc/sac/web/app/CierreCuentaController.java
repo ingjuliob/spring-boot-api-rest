@@ -86,6 +86,7 @@ public class CierreCuentaController {
                                     .tieneTarjetas(tieneTarjetas).visibilidadGrabar(visibilidadGrabar).errorDebitos(errorDebitos).estado(estado)
                                     .tarjetasDeCredito(Arrays.asList(obtenerTC.get(documento))).listaPlazoFijo(Arrays.asList(obtenerPlazofijo.get(documento)))
                                     .listaDebitos(Arrays.asList(obtenerDebitos.get(documento))).cuentaList(Arrays.asList(obtenerCuenta.get(documento)))
+                                    .listaPrestamos(Arrays.asList(obtenerPrestamos.get(documento)))
                                     .header(UtilsController.getSuccessResponse()).build();
 
             } else {

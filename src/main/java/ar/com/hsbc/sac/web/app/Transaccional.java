@@ -53,5 +53,6 @@ class Transaccional {
     private List<PlazoFijoDTO> listaPlazoFijo;
     private List<DebitoDTO> listaDebitos;
     private List<CuentaDTO> cuentaList;
+    private List<PrestamosDTO> listaPrestamos;
 
 }
