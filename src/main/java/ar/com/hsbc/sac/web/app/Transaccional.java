@@ -54,5 +54,10 @@ class Transaccional {
     private List<DebitoDTO> listaDebitos;
     private List<CuentaDTO> cuentaList;
     private List<PrestamosDTO> listaPrestamos;
+    private List<FiliatoriosDTO> docTypeList;
+    private List<FiliatoriosDTO> maritalStList;
+    private List<FiliatoriosDTO> countryList;
+    private FiliationInformationDTO filiationInfoDto;
+
 
 }
