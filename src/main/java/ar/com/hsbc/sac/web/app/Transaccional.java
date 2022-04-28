@@ -58,6 +58,9 @@ class Transaccional {
     private List<FiliatoriosDTO> maritalStList;
     private List<FiliatoriosDTO> countryList;
     private FiliationInformationDTO filiationInfoDto;
+    private List<DebitoAutoDTO> debitoAutoDto;
+    private String clientNumber;
+    private List<String> enteSubEnteString;
 
 
 }
