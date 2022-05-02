@@ -61,6 +61,7 @@ class Transaccional {
     private List<DebitoAutoDTO> debitoAutoDto;
     private String clientNumber;
     private List<String> enteSubEnteString;
+    private List<DebitoAutoDTO> debitToAsociate;
 
 
 }

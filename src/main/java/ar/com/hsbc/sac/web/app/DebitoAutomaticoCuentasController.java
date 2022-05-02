@@ -1,5 +1,4 @@
 package ar.com.hsbc.sac.web.app;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,10 +16,10 @@ public class DebitoAutomaticoCuentasController {
     DebitoAutoDTO [] debitoAutoDto= new DebitoAutoDTO[2];
     String clientNumber;
     String [] enteSubEnteString= new String[1];
-    String [] enteSubEnt= new String[5];
+    DebitoAutoDTO [] enteSubEnt= new DebitoAutoDTO[5];
     Map<String, DebitoAutoDTO []> debitAut= new HashMap<>();
     Map<String, String> getClientNum= new HashMap<>();
-    Map<String, String[]> entSbStr= new HashMap<>();
+    Map<String, DebitoAutoDTO[]> entSbStr= new HashMap<>();
     private void setCards() {
         
         enteSubEnteString[0]="00104000-ARGENCARD-TARJETAS";
@@ -37,11 +36,16 @@ public class DebitoAutomaticoCuentasController {
             debitAut.put("DNI10266305", debitoAutoDto);
             getClientNum.put("DNI10266305", clientNumber);
 
-        enteSubEnt[0]="88880017-TOTALHOGAR-COBROCUOTA";
-        enteSubEnt[1]="88880017-TOTALHOGAR-COBROOTP03";
-        enteSubEnt[2]="88880017-TOTALHOGAR-COBROOTP06";
-        enteSubEnt[3]="88880017-TOTALHOGAR-COBROOTP12";
-        enteSubEnt[4]="88880017-TOTALHOGAR-COBROOTP15";
+        enteSubEnt[0]=DebitoAutoDTO.builder().enteSubEnteDesc("88880017-TOTALHOGAR-COBROCUOTA")
+                        .longReference("7").ente("88880").subEnte("0017").build();
+        enteSubEnt[1]=DebitoAutoDTO.builder().enteSubEnteDesc("88880018-TOTALHOGAR-COBROOTP03")
+                        .longReference("7").ente("88880").subEnte("0018").build();
+        enteSubEnt[2]=DebitoAutoDTO.builder().enteSubEnteDesc("88880019-TOTALHOGAR-COBROOTP06")
+                        .longReference("7").ente("88880").subEnte("019").build();
+        enteSubEnt[3]=DebitoAutoDTO.builder().enteSubEnteDesc("88880020-TOTALHOGAR-COBROOTP12")
+                        .longReference("7").ente("88880").subEnte("020").build();
+        enteSubEnt[4]=DebitoAutoDTO.builder().enteSubEnteDesc("88880021-TOTALHOGAR-COBROOTP15")
+                        .longReference("7").ente("88880").subEnte("021").build();
 
         entSbStr.put("20108496380", enteSubEnt);
         
@@ -71,7 +75,7 @@ public class DebitoAutomaticoCuentasController {
             String documento = cuit;
             Transaccional transacc = null;
             if (entSbStr.containsKey(documento)) {
-                    transacc = Transaccional.builder().enteSubEnteString(Arrays.asList(entSbStr.get(documento)))
+                    transacc = Transaccional.builder().debitToAsociate(Arrays.asList(entSbStr.get(documento)))
                                     .header(UtilsController.getSuccessResponse()).build();
             } else {
                     transacc = Transaccional.builder().header(UtilsController.getNotFoundResponse()).build();
